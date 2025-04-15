@@ -3,22 +3,26 @@ using UnityEngine.SceneManagement;
 
 public class IntroSceneContext : MonoBehaviour
 {
-    float timer;
+    float _timer;
+    public CanvasGroup logo;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        timer = 3f;
+        _timer = 3f;
+        logo.alpha = 1f;
+
+        UIManager.FadeOutEffect(logo);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timer < 0 || Input.GetMouseButtonDown(0))
+        if (_timer < 0 || Input.GetMouseButtonDown(0))
         {
             SceneManager.LoadScene("LobbyScene");
         }
 
-        timer -= Time.deltaTime;
+        _timer -= Time.deltaTime;
     }
 }
